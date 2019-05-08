@@ -5,7 +5,7 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false });
 
 var mongoose = require('mongoose');
 
-mongoose.connect('mongodb+srv://todo:todo@cluster0-jfrr8.mongodb.net/test?retryWrites=true');
+mongoose.connect('mongodb+srv://todo:todo@cluster0-jfrr8.mongodb.net/test?retryWrites=true', { useNewUrlParser: true });
 
 var todoSchema = new mongoose.Schema({
     item: String
@@ -27,7 +27,7 @@ module.exports = function(app) {
         })
     })
     app.post('/todo', urlencodedParser, function(req, res) {
-        var itemOne = Todo(req.body).save(function(err, data) {
+        Todo(req.body).save(function(err, data) {
                 if (err) throw err;
                 res.json(data)
             })

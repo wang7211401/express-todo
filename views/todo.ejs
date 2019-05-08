@@ -17,7 +17,7 @@
         </form>
         <ul>
             <% todos.forEach(function(item){ %>
-                <li>
+                <li _id="<%= item._id %>">
                     <%= item.item %>
                 </li>
                 <% }) %>

@@ -20,10 +20,11 @@ $(document).ready(function() {
     });
 
     $('li').on('click', function() {
-        var item = $(this).text().trim().replace(/ /g, "-");
+        // var item = $(this).text().trim().replace(/ /g, "-");
+        var id = $(this).attr('_id')
         $.ajax({
             type: 'DELETE',
-            url: '/todo/' + item,
+            url: '/todo/' + id,
             success: function(data) {
                 //do something with the data via front-end framework
                 location.reload();
